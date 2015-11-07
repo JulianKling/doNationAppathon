@@ -1,5 +1,6 @@
 package appathon.donation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -52,6 +54,7 @@ public class SelectActivity extends AppCompatActivity {
             button3.setEnabled(false);
             button4.setEnabled(false);
             donateButton.setText("You just donated :)");
+            //receiveThanks();
         }
     }
 
@@ -115,6 +118,16 @@ public class SelectActivity extends AppCompatActivity {
         bwImage.requestLayout();
 
         final TextView percentageText = (TextView) findViewById(R.id.textView);
-        percentageText.setText(percentage + "%; " + String.format("%.2f", money*percentage/100) + "€/" + money + "€");
+        percentageText.setText(percentage + "%; " + String.format("%.2f", money * percentage / 100) + "€/" + money + "€");
+    }
+
+    public void receiveThanks() {
+
+        Context context = getApplicationContext();
+        CharSequence text = "Hello toast!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
