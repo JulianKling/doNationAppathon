@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,9 +17,10 @@ import android.widget.TextView;
 public class SelectActivity extends AppCompatActivity {
 
     public static boolean hasDonated = false;
-    public int percentage = 50;
+    public int percentage = 0;
     public static double money = 2.99;
 
+    private boolean pressed = false;
     private int layout_height = 0;
     private int layout_width = 0;
 
@@ -29,6 +31,7 @@ public class SelectActivity extends AppCompatActivity {
 
         updateValue();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,6 +115,6 @@ public class SelectActivity extends AppCompatActivity {
         bwImage.requestLayout();
 
         final TextView percentageText = (TextView) findViewById(R.id.textView);
-        percentageText.setText(percentage + "%; " + money*percentage/100 + "/" + money);
+        percentageText.setText(percentage + "%; " + String.format("%.2f", money*percentage/100) + "€/" + money + "€");
     }
 }
