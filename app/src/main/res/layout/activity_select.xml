@@ -9,6 +9,12 @@
     android:orientation="vertical"
     tools:context="com.example.katharina.donation_00.SelectActivity">
 
+    <ImageView
+        android:id="@+id/imageView_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo" />
+
     <RelativeLayout
         android:id="@+id/imageLayout"
         android:layout_width="match_parent"
@@ -22,7 +28,7 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/giftbox" />
+            android:src="@mipmap/cup" />
 
         <ImageView
             android:id="@+id/imageView_blackAndWhite"
@@ -33,31 +39,48 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView_color"
-        android:layout_centerHorizontal="true"
-        android:text="50%"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/imageView_color" >
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="doReset"
-        android:text="Reset" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_height="wrap_content"
+            android:text="50%"
+            android:textSize="46sp"
+            style="@style/MyTextViewStyle" />
+
+        <TextView
+            android:id="@+id/textView_payment"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="test"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            style="@style/MyTextViewStyle" />
+
+        <ImageButton
+            android:id="@+id/imageButton_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:scaleType="fitXY"
+            android:onClick="doReset"
+            android:src="@mipmap/arrow" />
+
+     </LinearLayout>
 
 
     <Button
         android:id="@+id/buttonDonate"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="12dp"
-        android:layout_below="@+id/button4"
         android:onClick="goToPayment"
-        android:text="Donate" />
+        android:text="donate"
+        style="@style/MyButtonStyle" />
 
 </LinearLayout>

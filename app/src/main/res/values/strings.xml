@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">doNation</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_select">Select Amount</string>
-    <string name="title_activity_payment">Confirm Payment</string>
-    <string name="confirm_donation">Please confirm you donation!</string>
-    <string name="accept_donation">Accept</string>
-    <string name="cancel_donation">Cancel</string>
+    <string name="app_name">doGood</string>
+    <string name="action_settings">settings</string>
+    <string name="title_activity_select">select amount</string>
+    <string name="title_activity_payment">confirm payment</string>
+    <string name="confirm_donation">please confirm your donation</string>
+    <string name="accept_donation">confirm</string>
+    <string name="cancel_donation">cancel</string>
 </resources>

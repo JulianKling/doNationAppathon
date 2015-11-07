@@ -50,11 +50,10 @@ public class SelectActivity extends AppCompatActivity {
         if (hasDonated) {
             final Button donateButton = (Button) findViewById(R.id.buttonDonate);
             final ImageButton button3 = (ImageButton) findViewById(R.id.imageView_color);
-            final Button button4 = (Button) findViewById(R.id.button4);
             donateButton.setEnabled(false);
             button3.setEnabled(false);
-            button4.setEnabled(false);
             donateButton.setText("You just donated :)");
+            //donateButton.setTextColor(getColorStateList());
             //receiveThanks();
         }
     }
@@ -105,7 +104,7 @@ public class SelectActivity extends AppCompatActivity {
     public void goToPayment(View view) {
 
         DialogFragment newFragment = new AcceptPaymentDialog();
-        newFragment.show(getSupportFragmentManager(),"AcceptDonation");
+        newFragment.show(getSupportFragmentManager(), "AcceptDonation");
 
         //Intent intent = new Intent(this, PaymentActivity.class);
         //startActivity(intent);
@@ -122,7 +121,9 @@ public class SelectActivity extends AppCompatActivity {
         bwImage.requestLayout();
 
         final TextView percentageText = (TextView) findViewById(R.id.textView);
-        percentageText.setText(percentage + "%; " + String.format("%.2f", money * percentage / 100) + "€/" + money + "€");
+        final TextView paymentText = (TextView) findViewById(R.id.textView_payment);
+        percentageText.setText(percentage + "%");
+        paymentText.setText("you pay " + String.format("%.2f", money * percentage / 100) + "€");
     }
 
     public void receiveThanks() {
