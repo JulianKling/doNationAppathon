@@ -21,9 +21,13 @@ android {
 
 repositories {
     maven {
+//        credentials {
+//            username project.hasProperty('giniRepoUser') ? giniRepoUser : 'invalidUser'
+//            password project.hasProperty('giniRepoPassword') ? giniRepoPassword : 'invalidPassword'
+//        }
         credentials {
-            username project.hasProperty('giniRepoUser') ? giniRepoUser : 'invalidUser'
-            password project.hasProperty('giniRepoPassword') ? giniRepoPassword : 'invalidPassword'
+            username project.hasProperty('giniRepoUser') ? giniRepoUser : 'unicredit-appathon-04'
+            password project.hasProperty('giniRepoPassword') ? giniRepoPassword : 'team4appathon'
         }
         url "https://repo.gini.net/nexus/content/repositories/releases"
 
