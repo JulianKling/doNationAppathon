@@ -1,4 +1,4 @@
-package gini;
+package appathon.donation;
 
 import android.content.Context;
 

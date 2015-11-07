@@ -1,4 +1,4 @@
-package gini;
+package appathon.donation;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,7 +21,7 @@ public class UploadActivity extends net.gini.android.vision.UploadActivity {
 
     private static final Logger LOG = LoggerFactory.getLogger(UploadActivity.class);
     public static final String EXTRA_ERROR_STRING = "error";
-    public static final String EXTRA_OCR_STRING = "gini";
+    public static final String EXTRA_OCR_STRING = "appathon/donation/gini";
     public static final int RESULT_UPLOAD_ERROR = RESULT_FIRST_USER;
 
     private DocumentTaskManager documentTaskManager;
