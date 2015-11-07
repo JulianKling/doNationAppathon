@@ -2,6 +2,7 @@ package appathon.donation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -103,8 +104,11 @@ public class SelectActivity extends AppCompatActivity {
 
     public void goToPayment(View view) {
 
-        Intent intent = new Intent(this, PaymentActivity.class);
-        startActivity(intent);
+        DialogFragment newFragment = new AcceptPaymentDialog();
+        newFragment.show(getSupportFragmentManager(),"AcceptDonation");
+
+        //Intent intent = new Intent(this, PaymentActivity.class);
+        //startActivity(intent);
     }
 
     private void updateValue() {
