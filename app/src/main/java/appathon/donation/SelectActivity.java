@@ -49,10 +49,19 @@ public class SelectActivity extends AppCompatActivity {
 
         if (hasDonated) {
             final Button donateButton = (Button) findViewById(R.id.buttonDonate);
+            final ImageButton resetButton = (ImageButton) findViewById(R.id.imageButton_arrow);
+            final ImageView image_bw = (ImageView) findViewById(R.id.imageView_blackAndWhite);
             final ImageButton button3 = (ImageButton) findViewById(R.id.imageView_color);
+            final RelativeLayout textView_thanks = (RelativeLayout) findViewById(R.id.relativeLayout_thanks);
+            final LinearLayout linearLayout_payment = (LinearLayout) findViewById(R.id.linearLayout_payment);
             donateButton.setEnabled(false);
+            donateButton.setVisibility(View.INVISIBLE);
+            resetButton.setEnabled(false);
+            linearLayout_payment.setVisibility(View.INVISIBLE);
             button3.setEnabled(false);
-            donateButton.setText("You just donated :)");
+            donateButton.setText("you just donated");
+            textView_thanks.setVisibility(View.VISIBLE);
+            image_bw.setVisibility(View.INVISIBLE);
             //donateButton.setTextColor(getColorStateList());
             //receiveThanks();
         }

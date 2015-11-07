@@ -43,6 +43,26 @@
             android:alpha="0.9"
             android:background="#FFFFFF" />
 
+        <RelativeLayout
+            android:id="@+id/relativeLayout_thanks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="thanks for donating"
+                android:id="@+id/textView_thanks"
+                android:layout_centerVertical="true"
+                style="@style/MyTextViewStyle" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/linearLayout_payment"
         android:layout_below="@+id/imageView_color" >
 
         <TextView
