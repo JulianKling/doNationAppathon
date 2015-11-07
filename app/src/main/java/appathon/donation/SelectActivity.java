@@ -19,6 +19,9 @@ public class SelectActivity extends AppCompatActivity {
     public int percentage = 50;
     public static double money = 2.99;
 
+    private int layout_height = 0;
+    private int layout_width = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,20 @@ public class SelectActivity extends AppCompatActivity {
             button4.setEnabled(false);
             donateButton.setText("You just donated :)");
         }
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        // TODO Auto-generated method stub
+        super.onWindowFocusChanged(hasFocus);
+        updateSizeInfo();
+        updateValue();
+    }
+
+    private void updateSizeInfo() {
+        RelativeLayout rl_cards_details_card_area = (RelativeLayout) findViewById(R.id.imageLayout);
+        layout_width = rl_cards_details_card_area.getWidth();
+        layout_height = rl_cards_details_card_area.getHeight();
     }
 
     @Override
@@ -86,11 +103,9 @@ public class SelectActivity extends AppCompatActivity {
 
     private void updateValue() {
 
+        updateSizeInfo();
         final ImageView bwImage = (ImageView) findViewById(R.id.imageView_blackAndWhite);
-        final RelativeLayout colorImage = (RelativeLayout) findViewById(R.id.imageLayout);
-        int width = bwImage.getLayoutParams().width;
-        int testheight =  colorImage.getLayoutParams().height;
-        int height =  (int) (colorImage.getLayoutParams().height * (100 - percentage) / 100);
+        int height =  (int) (layout_height * (100 - percentage) / 100);
         System.out.print("height: " + height);
         RelativeLayout.LayoutParams parms = (RelativeLayout.LayoutParams)bwImage.getLayoutParams();
         parms.height = height;
