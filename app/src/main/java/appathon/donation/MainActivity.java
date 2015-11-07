@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String EXTRA_MESSAGE = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public void doScan(View view) {
         SelectActivity.hasDonated = false;
         Intent intent = new Intent(this, SelectActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, "test");
         startActivity(intent);
     }
 
