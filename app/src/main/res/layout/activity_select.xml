@@ -47,6 +47,18 @@
             android:background="@android:color/white"
             android:contentDescription="@string/image_bw" />
 
+        <ImageView
+            android:onClick="doPlus"
+            android:id="@+id/imageView_press"
+            android:background="@android:color/transparent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/press_and_hold"
+            android:contentDescription="@string/image_color" />
+
         <RelativeLayout
             android:id="@+id/relativeLayout_thanks"
             android:layout_width="wrap_content"
