@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         ScannerActivity.setUploadActivityExtra(scanIntent, this, UploadActivity.class);
         startActivityForResult(scanIntent, IMAGE_REQUEST);
 
+        UploadActivity.doneOnce = false;
+        this.finish();
     }
 
     @Override

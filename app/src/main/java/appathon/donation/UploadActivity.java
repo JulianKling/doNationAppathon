@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 
 public class UploadActivity extends net.gini.android.vision.UploadActivity {
 
+    public static boolean doneOnce = false;
+
     private static final Logger LOG = LoggerFactory.getLogger(UploadActivity.class);
     public static final String EXTRA_ERROR_STRING = "error";
     public static final String EXTRA_OCR_STRING = "ocr_result";
@@ -36,10 +38,17 @@ public class UploadActivity extends net.gini.android.vision.UploadActivity {
 //        final Intent result = new Intent();
 //        result.putExtra(EXTRA_OCR_STRING, ocrResult);
 //        setResult(RESULT_OK, result);
-        LOG.info("ocr recognized tag number: " + ocrResult);
-        SelectActivity.hasDonated = false;
-        SelectActivity.productId = ocrResult;
-        Intent intent = new Intent(this, SelectActivity.class);
-        startActivity(intent);
+        if (!doneOnce) {
+            doneOnce = true;
+            LOG.info("ocr recognized tag number: " + ocrResult);
+            SelectActivity.hasDonated = false;
+            SelectActivity.productId = ocrResult;
+            Intent intent = new Intent(this, SelectActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
     }
 }
