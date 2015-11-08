@@ -123,10 +123,12 @@ public class SelectActivity extends AppCompatActivity {
             // call API to donate
             id = "tbd_by_api_callback";
             new DoDonation().execute(this);
+            new DoPayment().execute(this);
 
             // call API to check if donation was collected
             // will be replaced by push notification
             new CheckDonation().execute(this, id);
+
         }
     }
 
