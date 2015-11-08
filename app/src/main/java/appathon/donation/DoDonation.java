@@ -28,10 +28,10 @@ class DoDonation extends AsyncTask<Object, Integer, Object>
         {
             Uri builtUri = Uri.parse("http://labs.casaro.de/doNation/donate.php")
                     .buildUpon()
-                    .appendQueryParameter("item", "tee")
+                    .appendQueryParameter("item", "Cappuccino")
                     .appendQueryParameter("percent", "100")
-                    .appendQueryParameter("organization", "starbucks")
-                    .appendQueryParameter("giver", "john")
+                    .appendQueryParameter("organization", "Münchner Cafe")
+                    .appendQueryParameter("giver", "Steven")
                     .build();
             URL url = new URL(builtUri.toString());
             URLConnection urlConnection = url.openConnection();

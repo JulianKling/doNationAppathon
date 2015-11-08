@@ -200,11 +200,11 @@ public class SelectActivity extends AppCompatActivity {
     }
 
     // Receives a notification because someone collected the donated product.
-    public void receiveThanks(final SelectActivity selectActivity, final String taker) {
+    public void receiveThanks(final SelectActivity selectActivity, final String taker, final String product) {
 
         selectActivity.runOnUiThread(new Runnable() {
             public void run() {
-                CharSequence text = "Your donation was enjoyed by " + taker + ". You are too good!";
+                CharSequence text = "Your " + product + " was enjoyed by " + taker + ". You are too good!";
                 Toast.makeText(selectActivity.getBaseContext(), text, Toast.LENGTH_LONG).show();
             }
         });

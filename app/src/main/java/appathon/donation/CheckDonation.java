@@ -50,9 +50,10 @@ class CheckDonation extends AsyncTask<Object, Integer, Object>
                 Document dom = db.parse(in);
 
                 Node taker = dom.getElementsByTagName("taker").item(0);
+                Node product = dom.getElementsByTagName("item").item(0);
                 //String taker = dom.getElementsByTagName("taker").item(0).getFirstChild().getTextContent();
                 if (taker != null && !taker.getTextContent().isEmpty()) {
-                    selectActivity.receiveThanks(selectActivity, taker.getTextContent());
+                    selectActivity.receiveThanks(selectActivity, taker.getTextContent(), product.getTextContent());
                 } else {
                     Thread.sleep(1000);
                     callAPI(selectActivity);
