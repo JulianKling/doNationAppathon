@@ -21,7 +21,7 @@ public class UploadActivity extends net.gini.android.vision.UploadActivity {
 
     private static final Logger LOG = LoggerFactory.getLogger(UploadActivity.class);
     public static final String EXTRA_ERROR_STRING = "error";
-    public static final String EXTRA_OCR_STRING = "appathon/donation/gini";
+    public static final String EXTRA_OCR_STRING = "ocr_result";
     public static final int RESULT_UPLOAD_ERROR = RESULT_FIRST_USER;
 
     private DocumentTaskManager documentTaskManager;
@@ -43,7 +43,6 @@ public class UploadActivity extends net.gini.android.vision.UploadActivity {
                     @Override
                     public Task<Document> then(Task<Document> task) throws Exception {
                         final Document document = task.getResult();
-                        documentId = document.getId();
                         return documentTaskManager.pollDocument(document);
                     }
                 })
