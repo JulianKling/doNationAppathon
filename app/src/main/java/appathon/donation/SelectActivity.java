@@ -64,7 +64,7 @@ public class SelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
 
-        updateValue();
+//        updateValue();
     }
 
     @Override
