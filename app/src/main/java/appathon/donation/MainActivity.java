@@ -70,15 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         UploadActivity.doneOnce = false;
         this.finish();
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                Intent mInHome = new Intent(MainActivity.this, SelectActivity.class);
-                MainActivity.this.startActivity(mInHome);
-                MainActivity.this.finish();
-            }
-        }, 7000);
     }
 
     @Override
