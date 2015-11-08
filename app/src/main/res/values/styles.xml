@@ -11,7 +11,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">52sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:typeface">serif</item>
+        <item name="android:typeface">normal</item>
         <item name="android:layout_margin">5dp</item>
     </style>
 
@@ -21,7 +21,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:typeface">serif</item>
+        <item name="android:typeface">normal</item>
         <item name="android:layout_margin">1mm</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
