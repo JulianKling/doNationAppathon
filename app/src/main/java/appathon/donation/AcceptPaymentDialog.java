@@ -12,15 +12,15 @@ import android.support.v4.app.DialogFragment;
  * accidentally pressing the 'donate' button and forces the user to confirm the donation.
  */
 public class AcceptPaymentDialog extends DialogFragment {
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
+        // Use the Builder class for the dialog construction.
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(R.string.confirm_donation)
                 .setPositiveButton(R.string.accept_donation, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         SelectActivity.hasDonated = true;
-                        // Sascha has to send here
                         dialog.dismiss();
                         ((SelectActivity) getContext()).onResume();
                     }
@@ -30,7 +30,7 @@ public class AcceptPaymentDialog extends DialogFragment {
                         dialog.dismiss();
                     }
                 });
-        // Create the AlertDialog object and return it
+        // Create the AlertDialog object and return it.
         return builder.create();
     }
 }

@@ -13,7 +13,7 @@ import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.FileAppender;
 
-
+// Logger for Gini.
 public class LogbackConfigurator {
 
     private FileAppender<ILoggingEvent> fileAppender;

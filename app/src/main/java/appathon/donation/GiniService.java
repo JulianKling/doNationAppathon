@@ -5,7 +5,6 @@ import android.content.Context;
 import net.gini.android.Gini;
 import net.gini.android.SdkBuilder;
 
-// TODO implement real service.
 public enum GiniService {
     INSTANCE;
 
@@ -17,7 +16,7 @@ public enum GiniService {
                     context,
                     context.getString(R.string.gini_api_client_id),
                     context.getString(R.string.gini_api_client_secret),
-                    "example.com"
+                    "doGood.com"
             ).build();
         }
 

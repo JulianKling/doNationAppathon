@@ -41,14 +41,22 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class SelectActivity extends AppCompatActivity {
 
+    // Marks if the user has already donated. UI depends on this.
     public static boolean hasDonated = false;
+    // The percentage of the product the user wants to donate.
     public int percentage = 0;
+    // The money the product is worth.
+    // TODO: Get this from the code in the scanned logo. Hardcoded only for demonstration.
     public static double money = 2.99;
+    // The ID of the product.
+    // TODO: Get this from the code in the scanned logo. Hardcoded only for demonstration.
     public static String productId = null;
 
-    private boolean pressed = false;
+    // The height of the image representing the product. Needed for UI.
     private int layout_height = 0;
+    // The width of the image representing the product. Needed for UI.
     private int layout_width = 0;
+    // An ID that is stored to make the "thank you" messages possible.
     private String id;
 
     @Override
@@ -74,6 +82,7 @@ public class SelectActivity extends AppCompatActivity {
             final Button donateButton = (Button) findViewById(R.id.buttonDonate);
             final ImageButton resetButton = (ImageButton) findViewById(R.id.imageButton_arrow);
             final ImageView image_bw = (ImageView) findViewById(R.id.imageView_blackAndWhite);
+            final ImageView image_powered = (ImageView) findViewById(R.id.imageView_powered);
             final ImageButton button3 = (ImageButton) findViewById(R.id.imageView_color);
             final RelativeLayout textView_thanks = (RelativeLayout) findViewById(R.id.relativeLayout_thanks);
             final LinearLayout linearLayout_payment = (LinearLayout) findViewById(R.id.linearLayout_payment);
@@ -86,6 +95,11 @@ public class SelectActivity extends AppCompatActivity {
             textView_thanks.setVisibility(View.VISIBLE);
             image_bw.setVisibility(View.INVISIBLE);
             //donateButton.setTextColor(getColorStateList());
+
+            image_powered.setVisibility(View.VISIBLE);
+            RelativeLayout.LayoutParams parms = (RelativeLayout.LayoutParams)image_powered.getLayoutParams();
+            parms.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+            image_powered.requestLayout();
 
             // call API to donate
             id = "tbd_by_api_callback";
@@ -105,6 +119,8 @@ public class SelectActivity extends AppCompatActivity {
         updateValue();
     }
 
+    // Update the size of the relative layout, because this is needed to hide certain percentage of
+    // the picture.
     private void updateSizeInfo() {
         RelativeLayout rl_cards_details_card_area = (RelativeLayout) findViewById(R.id.imageLayout);
         layout_width = rl_cards_details_card_area.getWidth();
@@ -126,6 +142,7 @@ public class SelectActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Adds 5% to the donated product.
     public void doPlus(View view) {
         if (percentage < 100) {
             percentage += 5;
@@ -134,23 +151,22 @@ public class SelectActivity extends AppCompatActivity {
         updateValue();
     }
 
+    // Sets the percentage of payed product to zero; giving the user an option for corrections.
     public void doReset(View view) {
         percentage = 0;
         updateValue();
     }
 
 
+    // Opens a dialogue to let the user confirm the payment.
+    // Not needed technically, but because the money should not be gone after one click only.
     public void goToPayment(View view) {
-
         DialogFragment dialogFragment = new AcceptPaymentDialog();
         dialogFragment.show(getSupportFragmentManager(), "AcceptDonation");
-
-        //Intent intent = new Intent(this, PaymentActivity.class);
-        //startActivity(intent);
     }
 
+    // Actualizes UI for change of percentage.
     private void updateValue() {
-
         updateSizeInfo();
         final ImageView bwImage = (ImageView) findViewById(R.id.imageView_blackAndWhite);
         int height =  (int) (layout_height * (100 - percentage) / 100);
@@ -165,6 +181,7 @@ public class SelectActivity extends AppCompatActivity {
         paymentText.setText("you pay " + String.format("%.2f", money * percentage / 100) + "€");
     }
 
+    // Receives a notification because someone collected the donated product.
     public void receiveThanks(final SelectActivity selectActivity, final String taker) {
 
         selectActivity.runOnUiThread(new Runnable() {
@@ -173,7 +190,6 @@ public class SelectActivity extends AppCompatActivity {
                 Toast.makeText(selectActivity.getBaseContext(), text, Toast.LENGTH_LONG).show();
             }
         });
-
         // resetting id
         this.id = "";
     }

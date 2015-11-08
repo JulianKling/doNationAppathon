@@ -14,9 +14,9 @@ import java.net.URLConnection;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-/**
- * Created by Sascha on 11/8/2015.
- */
+// Sends information about the donated item to the server. The final list of available items will
+// be shown online at http://labs.casaro.de/donation/overview.html.
+// TODO: Each shop should only be able to see its own donated items.
 class DoDonation extends AsyncTask<Object, Integer, Object>
 {
     protected String doInBackground(Object... params)

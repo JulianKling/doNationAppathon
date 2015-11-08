@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected static final int IMAGE_REQUEST = 1;
     protected boolean shouldStoreOriginal = false;
     protected boolean shouldStoreRectified = false;
-    protected LogbackConfigurator logbackConfigurator = new LogbackConfigurator();
 
     private String getImageFilename() {
         return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:s", Locale.GERMANY).format(new Date());
@@ -46,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return imageFile.toString();
     }
-
-    public final static String EXTRA_MESSAGE = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,16 +110,6 @@ public class MainActivity extends AppCompatActivity {
             final Toast toast = Toast.makeText(this, "Getting the extractions failed! " + error, Toast.LENGTH_LONG);
             toast.show();
         }
-    }
-
-    public void doScan(View view) {
-        // todo: obsolete code?
-
-
-        SelectActivity.hasDonated = false;
-        Intent intent = new Intent(this, SelectActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, "test");
-        startActivity(intent);
     }
 
     @Override

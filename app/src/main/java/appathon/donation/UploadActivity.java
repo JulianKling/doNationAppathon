@@ -10,7 +10,7 @@ import net.gini.android.Gini;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+// Sends pictures to Gini service.
 public class UploadActivity extends net.gini.android.vision.UploadActivity {
 
     public static boolean doneOnce = false;

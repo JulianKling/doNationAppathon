@@ -17,9 +17,8 @@ import java.net.URLConnection;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-/**
- * Created by Sascha on 11/8/2015.
- */
+// Checks if the donated item has been collected already.
+// TODO: Implement push notifications with IBM Bluemix instead of this.
 class CheckDonation extends AsyncTask<Object, Integer, Object>
 {
     protected String doInBackground(Object... params)
