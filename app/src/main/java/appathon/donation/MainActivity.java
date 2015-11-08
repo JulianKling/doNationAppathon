@@ -96,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             String ocrString = data.getStringExtra(UploadActivity.EXTRA_OCR_STRING);
-
-            // todo: send ocrString to the next activity
-
             SelectActivity.hasDonated = false;
             SelectActivity.productId = ocrString;
             Intent intent = new Intent(this, SelectActivity.class);
