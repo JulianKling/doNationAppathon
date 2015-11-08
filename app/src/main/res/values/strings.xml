@@ -5,4 +5,13 @@
     <string name="confirm_donation">please confirm your donation</string>
     <string name="accept_donation">confirm</string>
     <string name="cancel_donation">cancel</string>
+
+    <!-- Gini strings -->
+    <string name="title_activity_upload">Doing some magic</string>
+    <string name="title_activity_results">Results</string>
+    <string name="action_gini_settings">Gini Settings</string>
+    <string name="title_activity_gini_settings">GiniSettingsActivity</string>
+    <string name="action_report_document">Report document</string>
+    <string name="gini_api_client_id">unicredit-appathon-04</string>
+    <string name="gini_api_client_secret">MA9XwJLqA7JhTzLKeWC_C_WvOnnK4TE</string>
 </resources>

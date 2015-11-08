@@ -3,6 +3,10 @@ package appathon.donation;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,15 +22,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 public class SelectActivity extends AppCompatActivity {
 
     public static boolean hasDonated = false;
     public int percentage = 0;
     public static double money = 2.99;
+    public static String productId = null;
 
     private boolean pressed = false;
     private int layout_height = 0;
     private int layout_width = 0;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +58,6 @@ public class SelectActivity extends AppCompatActivity {
 
         updateValue();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,7 +86,14 @@ public class SelectActivity extends AppCompatActivity {
             textView_thanks.setVisibility(View.VISIBLE);
             image_bw.setVisibility(View.INVISIBLE);
             //donateButton.setTextColor(getColorStateList());
-            //receiveThanks();
+
+            // call API to donate
+            id = "tbd_by_api_callback";
+            new DoDonation().execute(this);
+
+            // call API to check if donation was collected
+            // will be replaced by push notification
+            new CheckDonation().execute(this, id);
         }
     }
 
@@ -136,13 +165,24 @@ public class SelectActivity extends AppCompatActivity {
         paymentText.setText("you pay " + String.format("%.2f", money * percentage / 100) + "€");
     }
 
-    public void receiveThanks() {
+    public void receiveThanks(final SelectActivity selectActivity, final String taker) {
 
-        Context context = getApplicationContext();
-        CharSequence text = "Hello toast!";
-        int duration = Toast.LENGTH_SHORT;
+        selectActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                CharSequence text = "Your donation was enjoyed by " + taker + ". You are too good!";
+                Toast.makeText(selectActivity.getBaseContext(), text, Toast.LENGTH_LONG).show();
+            }
+        });
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        // resetting id
+        this.id = "";
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
