@@ -47,8 +47,8 @@
             android:background="@android:color/white"
             android:contentDescription="@string/image_bw" />
 
-        <ImageView
-            android:onClick="doPlus"
+            <!--android:onClick="doPlus"-->
+        <ImageButton
             android:id="@+id/imageView_press"
             android:background="@android:color/transparent"
             android:layout_width="100dp"

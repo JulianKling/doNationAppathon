@@ -61,7 +61,7 @@ public class SelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        final ImageButton mBTIncrement = (ImageButton) findViewById(R.id.imageView_color);
+        final ImageButton mBTIncrement = (ImageButton) findViewById(R.id.imageView_press);
 
         mBTIncrement.getContext();
         mBTIncrement.setOnLongClickListener(new View.OnLongClickListener() {
@@ -132,7 +132,6 @@ public class SelectActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        // TODO Auto-generated method stub
         super.onWindowFocusChanged(hasFocus);
         updateSizeInfo();
         updateValue();
