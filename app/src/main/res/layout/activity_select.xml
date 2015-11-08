@@ -66,6 +66,7 @@
 
     </RelativeLayout>
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -73,6 +74,7 @@
         android:orientation="horizontal"
         android:id="@+id/linearLayout_payment"
         android:layout_below="@+id/imageView_color" >
+
 
         <TextView
             android:id="@+id/textView"
@@ -102,6 +104,18 @@
 
      </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/imageView_powered"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:src="@mipmap/powered"/>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/buttonDonate"
