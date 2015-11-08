@@ -20,6 +20,7 @@ public class AcceptPaymentDialog extends DialogFragment {
                 .setPositiveButton(R.string.accept_donation, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         SelectActivity.hasDonated = true;
+                        // Sascha has to send here
                         dialog.dismiss();
                         ((SelectActivity) getContext()).onResume();
                     }
