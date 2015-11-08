@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="appathon.donation" >
+    package="appathon.donation"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/logo_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        tools:replace="theme">
+        android:largeHeap="true"
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -24,6 +36,21 @@
             android:name=".PaymentActivity"
             android:label="@string/title_activity_payment" >
         </activity>
+        <activity
+            android:name=".UploadActivity"
+            android:icon="@android:color/transparent"
+            android:label="@string/title_activity_upload"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!--<activity-->
+            <!--android:name=".ResultsActivity"-->
+            <!--android:icon="@android:color/transparent"-->
+            <!--android:label="@string/title_activity_results" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".GiniSettingsActivity"-->
+            <!--android:label="@string/title_activity_gini_settings" >-->
+        <!--</activity>-->
     </application>
 
 </manifest>

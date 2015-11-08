@@ -22,6 +22,7 @@ public class SelectActivity extends AppCompatActivity {
     public static boolean hasDonated = false;
     public int percentage = 0;
     public static double money = 2.99;
+    public static String productId = null;
 
     private boolean pressed = false;
     private int layout_height = 0;

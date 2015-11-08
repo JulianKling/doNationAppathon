@@ -26,5 +26,6 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <integer name="net.gini.android.vision.show_processing_average">0</integer>
 
 </resources>
