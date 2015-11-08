@@ -2,7 +2,6 @@
     <string name="app_name">doGood</string>
     <string name="action_settings">settings</string>
     <string name="title_activity_select">select amount</string>
-    <string name="title_activity_payment">confirm payment</string>
     <string name="confirm_donation">please confirm your donation</string>
     <string name="accept_donation">confirm</string>
     <string name="cancel_donation">cancel</string>
