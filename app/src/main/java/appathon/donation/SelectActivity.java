@@ -1,12 +1,6 @@
 package appathon.donation;
 
-import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,22 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -46,17 +24,57 @@ public class SelectActivity extends AppCompatActivity {
     public static double money = 2.99;
     public static String productId = null;
 
-    private boolean pressed = false;
-    private int layout_height = 0;
     private int layout_width = 0;
+    private int layout_height = 0;
     private String id;
+
+    private Handler repeatUpdateHandler = new Handler();
+    private boolean mAutoIncrement = false;
+
+    /**
+     * Created by jkling on 07.11.15.
+     * This class runs in a separate thread and provides the
+     * possibility to press a button continuously.
+     *
+     * Based on: http://stackoverflow.com/questions/
+     * 7938516/continuously-increase-integer-value-as-the-button-is-pressed
+     */
+    class RptUpdater implements Runnable {
+        public void run() {
+            if( mAutoIncrement ){
+                doPlus((View)null);
+                repeatUpdateHandler.postDelayed( new RptUpdater(),50);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
+        final ImageButton mBTIncrement = (ImageButton) findViewById(R.id.imageView_color);
 
-//        updateValue();
+        mBTIncrement.getContext();
+        mBTIncrement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mAutoIncrement = true;
+                repeatUpdateHandler.post(new RptUpdater());
+                return false;
+            }
+        });
+
+        mBTIncrement.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if ((event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL)
+                        && mAutoIncrement) {
+                    mAutoIncrement = false;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -128,7 +146,7 @@ public class SelectActivity extends AppCompatActivity {
 
     public void doPlus(View view) {
         if (percentage < 100) {
-            percentage += 5;
+            percentage += 2;
         }
 
         updateValue();
