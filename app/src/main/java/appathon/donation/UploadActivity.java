@@ -35,44 +35,57 @@ public class UploadActivity extends net.gini.android.vision.UploadActivity {
     }
 
     public void uploadDocument(final Bitmap document) {
-        final Intent intent = getIntent();
-        final Bundle documentTypeBundle = intent.getBundleExtra(EXTRA_DOCTYPE_BUNDLE);
-        final DocumentType documentType = documentTypeBundle.getParcelable(EXTRA_DOCTYPE);
-        documentTaskManager.createDocument(document, null, documentType.getApiDocTypeHint(), 50)
-                .onSuccessTask(new Continuation<Document, Task<Document>>() {
-                    @Override
-                    public Task<Document> then(Task<Document> task) throws Exception {
-                        final Document document = task.getResult();
-                        return documentTaskManager.pollDocument(document);
-                    }
-                })
-                .onSuccessTask(new Continuation<Document, Task<JSONObject>>() {
-                    @Override
-                    public Task<JSONObject> then(Task<Document> task) throws Exception {
-                        return documentTaskManager.getLayout(task.getResult());
-                    }
-                })
-                .onSuccess(new Continuation<JSONObject, Object>() {
-                    @Override
-                    public Object then(Task<JSONObject> task) throws Exception {
-                        return null;
-                    }
-                })
-                .continueWith(new Continuation<Object, Object>() {
-                    @Override
-                    public Object then(Task<Object> task) throws Exception {
-                        // todo: we would get the layout information from the Gini SDK as a
-                        // JSONObject here. For the demo let's assume it worked and the OCR did a
-                        // good job.
-                        final String ocrResult = "#07289020#";
-
-                        LOG.info("ocr recognized tag number: " + ocrResult);
-
-                        final Intent result = new Intent();
-                        result.putExtra(EXTRA_OCR_STRING, ocrResult);
-                        setResult(RESULT_OK, result);
-                        return null;
-                    }
-                });
+        // todo: we would get the layout information from the Gini SDK as a
+        // JSONObject here. For the demo let's assume it worked and the OCR did a
+        // good job.
+        final String ocrResult = "#07289020#";
+//        final Intent result = new Intent();
+//        result.putExtra(EXTRA_OCR_STRING, ocrResult);
+//        setResult(RESULT_OK, result);
+        LOG.info("ocr recognized tag number: " + ocrResult);
+        SelectActivity.hasDonated = false;
+        SelectActivity.productId = ocrResult;
+        Intent intent = new Intent(this, SelectActivity.class);
+        startActivity(intent);
+        
+//        final Intent intent = getIntent();
+//        final Bundle documentTypeBundle = intent.getBundleExtra(EXTRA_DOCTYPE_BUNDLE);
+//        final DocumentType documentType = documentTypeBundle.getParcelable(EXTRA_DOCTYPE);
+//        documentTaskManager.createDocument(document, null, documentType.getApiDocTypeHint(), 50)
+//                .onSuccessTask(new Continuation<Document, Task<Document>>() {
+//                    @Override
+//                    public Task<Document> then(Task<Document> task) throws Exception {
+//                        final Document document = task.getResult();
+//                        return documentTaskManager.pollDocument(document);
+//                    }
+//                })
+//                .onSuccessTask(new Continuation<Document, Task<JSONObject>>() {
+//                    @Override
+//                    public Task<JSONObject> then(Task<Document> task) throws Exception {
+//                        return documentTaskManager.getLayout(task.getResult());
+//                    }
+//                })
+//                .onSuccess(new Continuation<JSONObject, Object>() {
+//                    @Override
+//                    public Object then(Task<JSONObject> task) throws Exception {
+//                        return null;
+//                    }
+//                })
+//                .continueWith(new Continuation<Object, Object>() {
+//                    @Override
+//                    public Object then(Task<Object> task) throws Exception {
+//                        // todo: we would get the layout information from the Gini SDK as a
+//                        // JSONObject here. For the demo let's assume it worked and the OCR did a
+//                        // good job.
+//                        final String ocrResult = "#07289020#";
+//
+//                        LOG.info("ocr recognized tag number: " + ocrResult);
+//
+//                        final Intent result = new Intent();
+//                        result.putExtra(EXTRA_OCR_STRING, ocrResult);
+//                        setResult(RESULT_OK, result);
+//                        return null;
+//                    }
+//                });
     }
 }
