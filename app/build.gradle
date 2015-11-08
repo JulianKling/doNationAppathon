@@ -57,7 +57,5 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.6'
     compile 'com.mcxiaoke.volley:library:1.0.18'
     compile 'com.parse.bolts:bolts-android:1.1.3'
-//    compile(name: 'ginisdk-debug', ext: 'aar')
-    compile(name: 'ginisdk-release', ext: 'aar')
 }
 
