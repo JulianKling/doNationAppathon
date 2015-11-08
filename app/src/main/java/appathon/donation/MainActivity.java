@@ -54,18 +54,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Call Gini scanner
-        Intent scanIntent = new Intent(this, ScannerActivity.class);
-        scanIntent.putExtra(ScannerActivity.EXTRA_STORE_ORIGINAL, shouldStoreOriginal);
-        scanIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        final Bundle docTypeBundle = new Bundle();
-        docTypeBundle.putParcelable(ScannerActivity.EXTRA_DOCTYPE, DocumentType.INVOICE);
-        scanIntent.putExtra(ScannerActivity.EXTRA_DOCTYPE_BUNDLE, docTypeBundle);
-        ScannerActivity.setUploadActivityExtra(scanIntent, this, UploadActivity.class);
-        startActivityForResult(scanIntent, IMAGE_REQUEST);
+        // todo: replace these lines with...
+        String ocrString = "test";
+        SelectActivity.hasDonated = false;
+        SelectActivity.productId = ocrString;
+        Intent intent = new Intent(this, SelectActivity.class);
+        startActivity(intent);
 
-        UploadActivity.doneOnce = false;
-        this.finish();
+        // todo: ... these lines for production code.
+//        // Call Gini scanner
+//        Intent scanIntent = new Intent(this, ScannerActivity.class);
+//        scanIntent.putExtra(ScannerActivity.EXTRA_STORE_ORIGINAL, shouldStoreOriginal);
+//        scanIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//        final Bundle docTypeBundle = new Bundle();
+//        docTypeBundle.putParcelable(ScannerActivity.EXTRA_DOCTYPE, DocumentType.INVOICE);
+//        scanIntent.putExtra(ScannerActivity.EXTRA_DOCTYPE_BUNDLE, docTypeBundle);
+//        ScannerActivity.setUploadActivityExtra(scanIntent, this, UploadActivity.class);
+//        startActivityForResult(scanIntent, IMAGE_REQUEST);
+//
+//        UploadActivity.doneOnce = false;
+//        this.finish();
     }
 
     @Override
